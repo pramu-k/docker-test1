@@ -1,4 +1,4 @@
 FROM openjdk
-COPY sample.java .
-RUN javac sample.java
+COPY Sample.java .
+RUN javac Sample.java
 CMD ["java", "sample"]

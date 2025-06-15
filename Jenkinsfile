@@ -1,6 +1,10 @@
 pipeline {
   agent any
 
+  environment {
+    DOCKER_BFLASK_IMAGE = 'myusername/myapp:1.0'
+  }
+
   stages {
     stage('Build') {
       steps {

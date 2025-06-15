@@ -2,7 +2,7 @@ pipeline {
   agent any
 
   environment {
-    DOCKER_BFLASK_IMAGE = 'pramudithakaluthanthri/repo_1'
+    DOCKER_BFLASK_IMAGE = 'pramudithakaluthanthri/repo_1:test'
   }
 
   stages {

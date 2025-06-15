@@ -10,7 +10,7 @@ pipeline {
     }
     stage('Test') {
       steps {
-        sh 'docker run myjava1'
+        bat 'docker run myjava1'
       }
     }
     stage('Deploy') {
@@ -24,7 +24,7 @@ pipeline {
   }
   post {
     always {
-      sh 'docker logout'
+      bat 'docker logout'
     }
   }
 }

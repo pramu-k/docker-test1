@@ -1,10 +1,6 @@
 pipeline {
   agent any
 
-  environment {
-    DOCKER_BFLASK_IMAGE = 'pramudithakaluthanthri/repo_1:test'
-  }
-
   stages {
     stage('Build') {
       steps {
@@ -19,7 +15,7 @@ pipeline {
     }
     stage('Deploy') {
       steps {
-        withCredentials([usernamePassword(credentialsId: "a834979f-2059-4782-bb0f-7052fd233fca", passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
+        withCredentials([usernamePassword(credentialsId: "${DOCKER_REGISTRY_CREDS}", passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
           bat "echo %DOCKER_PASSWORD% | docker login -u %DOCKER_USERNAME% --password-stdin docker.io"
           bat 'docker push %DOCKER_BFLASK_IMAGE%'
         }
